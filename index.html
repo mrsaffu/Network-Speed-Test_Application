@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Network Speed Test App</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="style.css">
+  </head>
+<body>
+  <div class="container">
+    <h1 id="page-title">Network Speed Test Application using JavaScript</h1>
+    <hr id="title_hr">
+    <!-- Wrapper -->
+    <div id="wrapper">
+      <div id="loader">
+        <div class="lds-ripple"><div></div><div></div></div>
+      </div>
+      <div id="netword-speed-title">Network Speed Result</div>
+      <div id="network-speeds">
+        <div class="speed">
+          <div class="speed-label">Bits</div>
+          <div id="bits-speed">0</div>
+        </div>
+        <div class="speed">
+          <div class="speed-label">Kbps</div>
+          <div id="kbps-speed">0</div>
+        </div>
+        <div class="speed">
+          <div class="speed-label">Mbps</div>
+          <div id="mbps-speed">0</div>
+        </div>
+      </div>
+      <div>
+        <button id="detect-speed">Check Network Speed</button>
+      </div>
+    </div>
+    <!-- Wrapper -->
+    
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,173 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;1,100;1,200;1,300;1,400;1,500;1,600&display=swap');
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto Mono', monospace;
+}
+.material-symbols-outlined {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 400,
+    'GRAD' 0,
+    'opsz' 48
+}
+::selection{
+  color: #fff;
+  background: #4db2ec;
+}
+body{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: #1e1f1f;
+  background-image: linear-gradient(to right, #434343 0%, black 100%);
+}
+/* page title */
+#page-title{
+  color: #fff;
+  text-align: center;
+  font-weight: 500;
+}
+#title_hr{
+  width:60px;
+  border: 2px solid #ffffff;
+  margin: .35em auto;
+}
+
+/* Wrapper */
+div#wrapper {
+  width: 400px;
+  margin: 1.3em auto;
+  margin-top: 1.3em;
+  padding: 0.75em 0.75em;
+  background: #fff;
+  border: 1px solid #5e5e5e;
+  border-radius: 5px;
+  box-shadow: 0px 0px 4px #ffffffc2;
+  margin-bottom: 1em;
+}
+
+/* Loader */
+#loader{
+  width: 100%;
+  display: none;
+  justify-content: center;
+}
+#loader .lds-ripple {
+  display: inline-block;
+  position: relative;
+  width: 80px;
+  height: 80px;
+}
+#loader .lds-ripple div {
+  position: absolute;
+  border: 4px solid #3c3b3b;
+  opacity: 1;
+  border-radius: 50%;
+  animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+#loader .lds-ripple div:nth-child(2) {
+  animation-delay: -0.5s;
+}
+@keyframes lds-ripple {
+  0% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  4.9% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 0;
+  }
+  5% {
+    top: 36px;
+    left: 36px;
+    width: 0;
+    height: 0;
+    opacity: 1;
+  }
+  100% {
+    top: 0px;
+    left: 0px;
+    width: 72px;
+    height: 72px;
+    opacity: 0;
+  }
+}
+
+/* Network Resul Title */
+div#netword-speed-title {
+  text-align: center;
+  font-size: 1.3rem;
+  font-weight: 400;
+  color: #383737;
+}
+
+/* Network Speed Result Wrapper */
+div#network-speeds {
+  position: relative;
+  width: 100%;
+  /* display: flex;
+  justify-content: space-evenly; */
+}
+
+.speed {
+  /* width: 33%; */
+  padding: 0.35em 0.75em;
+}
+
+.speed:has(~ .speed) {
+  border-bottom: 1px solid #e1e1e1;
+}
+
+.speed-label {
+  text-align: center;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+  color: #5e5959;
+}
+
+.speed #bits-speed,
+.speed #kbps-speed,
+.speed #mbps-speed{
+  text-align: center;
+  font-size: 1.2rem;
+  color: #141414;
+  font-weight: 400;
+  letter-spacing: 1.5px;
+  padding: 0.35em 0.75em;
+  overflow-wrap:anywhere;
+}
+
+button#detect-speed {
+  margin: 0.75em auto;
+  display: block;
+  padding: 0.35em 0.75em;
+  outline: none;
+  background: #00adff;
+  border: 1px solid #00adff;
+  box-shadow: 0px 0px 5px #00adffa3;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+button#detect-speed:hover,
+button#detect-speed:focus{
+  background: #0088ff;
+  border: 1px solid #0088ff;
+  box-shadow: 0px 0px 5px #0088ffaa;
+}
+
+button#detect-speed[disabled] {
+  filter: brightness(0.9);
+  pointer-events: none;
+  cursor: not-allowed;
+}

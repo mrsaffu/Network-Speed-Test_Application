@@ -1,0 +1,134 @@
+<p>This is a simple project entitled <b>Network Speed Test Application</b>. It is a web-based application that detects the internet or network speed. This mini-project application was mainly developed using <b>Pure JavaScript</b>. It has a simple and pleasant user interface using&nbsp;<b>Custom CSS</b> <em>(stylesheet)</em> scripts. It is an easy-to-use network speed detection application.</p>
+
+<h2><b>How does this Network Speed Test Application work?</b></h2>
+
+<p>This <b>Network Speed Test Application</b> is a straightforward application that is detecting the <a href="https://www.sourcecodester.com/tutorial/javascript/16140/checking-internet-connection-using-javascript-navigator-api-tutorial">internet</a> or network speed as the primary purpose. The application calculates the network speed in <b>Bits</b>, <b>Kilobits</b>, and&nbsp;<b>Megabits</b>. The users can simply browse the application with their preferred web browser and click the <b>Check Network Speed</b> button to calculate the speed. This application only computes the download <a href="https://www.sourcecodester.com/python/14389/typo-speed-typing-speed-calculator.html">speed</a> of the network or internet.</p>
+
+<h2><b>Features and Functionalities</b></h2>
+
+<p>This <b>Network Speed Test Application</b> is containing the following features and Functionalities:</p>
+
+<ul>
+	<li><b>Computes Download Speed in Bits</b></li>
+	<li><b>Computes Download Speed in Kilobits</b></li>
+	<li><b>Computes Download Speed in Megabits</b></li>
+	<li><b>Check Network Speed Button</b></li>
+	<li><b><a href="https://www.sourcecodester.com/tutorial/htmlcss/16202/creating-infinity-loader-using-html-and-css-tutorial">Loader</a> while computing the speed</b></li>
+</ul>
+
+<h2><b>Technologies</b></h2>
+
+<p>Here is the list of Technologies I used to develop this <b>Network Speed Test Application</b>:</p>
+
+<ul>
+	<li><b>VS Code Editor</b></li>
+	<li><b>HTML</b></li>
+	<li><b>CSS</b></li>
+	<li><b>JavaScript</b></li>
+	<li><b>Google Fonts</b></li>
+</ul>
+
+<h2><b>Snapshots</b></h2>
+
+<p>Here are some snapshots of this <b>Network Speed Test Application</b>:</p>
+
+<h3 class="text-center"><b>Page Interface</b></h3>
+
+<p class="text-center"><a href="https://www.sourcecodester.com/sites/default/files/images/oretnom23/js-network-speed-test-ui.jpg" target="_blank"><img alt="Netword Speed test Application using Pure JavaScript" src="https://www.sourcecodester.com/sites/default/files/images/oretnom23/js-network-speed-test-ui.jpg" /> </a></p>
+
+<h3 class="text-center"><b>Computing Download Speed</b></h3>
+
+<p class="text-center"><a href="https://www.sourcecodester.com/sites/default/files/images/oretnom23/js-network-speed-test-calculating.png" target="_blank"><img alt="Netword Speed test Application using Pure JavaScript" src="https://www.sourcecodester.com/sites/default/files/images/oretnom23/js-network-speed-test-calculating.png" /> </a></p>
+
+<h3 class="text-center"><b>Network Speed Result</b></h3>
+
+<p class="text-center"><a href="https://www.sourcecodester.com/sites/default/files/images/oretnom23/js-network-speed-test-result.jpg" target="_blank"><img alt="Netword Speed test Application using Pure JavaScript" src="https://www.sourcecodester.com/sites/default/files/images/oretnom23/js-network-speed-test-result.jpg" /> </a></p>
+
+<h2><b>How to Compute Network Speed using Pure JavaScript?</b></h2>
+
+<p><b>JavaScript</b> comes with multiple useful built-in methods, functions, APIs, and properties. Some of these become handy for computing the Network or Internet Download Speed. We can simply load an Image or GIF using JS and while loading the image, we can calculate the time difference between the start and end time of the process. Then, we can simply divide the image file size by the time difference and multiply it by 8 to get the total Bits. Lastly, using the total bits computed we can simply multiply it into 1024 to convert the value into Kilobits and multiply it into another 1024 value to convert it into Megabits. Check out the script I provided below, the JS code below is the one I used for computing the Speed of the Network on this project.</p>
+
+<p>
+<javascript>
+// Loader slector
+const loaderEl = document.getElementById('loader')
+// button slector
+const detectSpeedBtn = document.getElementById('detect-speed')
+// bits text container slector
+const bitsEl = document.getElementById('bits-speed')
+// kbps text container slector
+const kbpsEl = document.getElementById('kbps-speed')
+// mbps text container slector
+const mbpsEl = document.getElementById('mbps-speed')
+
+// Source of an image to load to check the speed
+let imageSrc = "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c8/132C_trans.gif/230px-132C_trans.gif?time="+ (new Date().getTime());
+
+detectSpeedBtn.addEventListener('click', e => {
+    // prevent default
+    e.preventDefault
+    var bits = 0;
+    var kbps = 0;
+    var mbps = 0;
+    var starTime = 0;
+    var endTime = 0;
+    detectSpeedBtn.disabled = true
+    loaderEl.style.display = `flex`
+
+    var img = new Image()
+    img.crossOrigin = ''
+    var imgSize = 0;
+
+    starTime = new Date().getTime();
+    img.src = imageSrc
+
+    img.onload = async ()=>{
+        endTime = new Date().getTime()
+
+        // Wait for the image link response and get image size
+        await fetch(imageSrc)
+        .then(response => {
+            imgSize = response.headers.get("content-length")
+            console.log(imgSize)
+            var timeDiff = (endTime - starTime) / 1000;
+            var loadedImgSizeInBits = imgSize * 8;
+            bits = (loadedImgSizeInBits / timeDiff)
+            kbps = (bits / 1024)
+            mbps = (kbps / 1024)
+            return
+        })
+        .then( () =>{
+            var tmpBits = 0;
+            var tmpKb = 0;
+            var tmpMb = 0;
+            // Animating the network result
+            function animate(){
+                if(tmpBits < bits || tmpKb < kbps || tmpMb < mbps){
+                    bitsEl.innerText = tmpBits.toLocaleString('en-US',{style:'decimal', maximumFractionDigits:2})
+                    kbpsEl.innerText = tmpKb.toLocaleString('en-US',{style:'decimal', maximumFractionDigits:2})
+                    mbpsEl.innerText = tmpMb.toLocaleString('en-US',{style:'decimal', maximumFractionDigits:2})
+                    tmpBits = tmpBits + (bits  / 20);
+                    tmpKb = tmpKb + (kbps  / 20);
+                    tmpMb = tmpMb + (mbps  / 20);
+                    setTimeout(animate, 30)
+                }else{
+                    bitsEl.innerText = bits.toLocaleString('en-US',{style:'decimal', maximumFractionDigits:2})
+                    kbpsEl.innerText = kbps.toLocaleString('en-US',{style:'decimal', maximumFractionDigits:2})
+                    mbpsEl.innerText = mbps.toLocaleString('en-US',{style:'decimal', maximumFractionDigits:2})
+                    detectSpeedBtn.disabled = false
+                    detectSpeedBtn.innerText = `Re-Check Network Speed`
+                    loaderEl.style.display = `none`
+                }
+            }
+            animate()
+        })
+    }
+})
+</javascript>
+</p>
+
+
+
+<p>That's it! I hope this <b>Network Speed Test Application using JavaScript Source Code</b> will help you with what you are looking for and will be useful for your current and future web application projects.</p>
+
+<h2><b>Happy Coding =)</b></h2>
